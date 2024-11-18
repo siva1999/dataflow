@@ -1,0 +1,26 @@
+1) Install Python3
+2) Install apache airflow 
+	pip install apache-airflow
+3) download and install docker desktop 
+4) Enable WSL2 Integeration in docker desktop
+	open Docker Desktop and go to Settings > Resources > WSL Integration > check every boxes and enable all
+   verify docker installation
+5) Create a folder for your Airflow project -  airflow_docker: and cd to it
+6) Download the airflow docker compose file :
+	curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.7.2/docker-compose.yaml'
+7)Set Environment Variables:
+	Create an .env file in the same folder to define Airflow environment variables
+	add the below in file:
+		AIRFLOW_UID=50000
+8)execute the below command:
+	 docker compose up airflow-init
+  check docker ps -a
+  init container will exit -> ignore that, bcz it is expected as it is only one time executable 
+  but other database containers should be up and running
+9)execute :
+	docker compose up -d
+  this will bring up all the services including webserver and scheduler
+
+
+
+  
